@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "inventory",
     "users",
-    "simplejwt",
+    "rest_framework_simplejwt",
 ]
 
 MIDDLEWARE = [
