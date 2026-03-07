@@ -11,14 +11,28 @@ class InventoryViewSet(viewsets.ModelViewSet):
     queryset = InventoryItem.objects.all()
     serializer_class = InventorySerializer
 
-# If action is list or retrieve (GET)  IsAuthenticated 
-# If action is create, update or destroy (POST, PUT, DELETE)
-# IsAuthenticated AND IsOwner
-
     def get_permissions(self):
         if self.action in ["list", "retrieve"]:
            return [IsAuthenticated()]
         return [IsAuthenticated(),  IsOwner()]
+    
+    def update(self, request, *args, **kwargs):
+        item = self.get_object()
+        old_quantity = item.quantity  # save before update
+        
+        response = super().update(request, *args, **kwargs)  # perform the update
+        
+        item.refresh_from_db()  # get the updated item
+    
+        if old_quantity != item.quantity:  # only log if quantity changed
+            InventoryChangeLog.objects.create(
+                item=item,
+                changed_by=request.user,
+                old_quantity=old_quantity,
+                new_quantity=item.quantity
+        )
+    
+        return response
 
 
 class InventoryChangeLogViewSet(viewsets.ModelViewSet):
