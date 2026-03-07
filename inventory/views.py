@@ -33,6 +33,9 @@ class InventoryViewSet(viewsets.ModelViewSet):
         )
     
         return response
+    
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 
 class InventoryChangeLogViewSet(viewsets.ModelViewSet):

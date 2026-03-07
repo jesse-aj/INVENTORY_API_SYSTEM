@@ -2,8 +2,7 @@ from rest_framework import serializers
 from .models import InventoryItem, InventoryChangeLog
 
 class InventorySerializer(serializers.ModelSerializer):
-    
-
+    user = serializers.PrimaryKeyRelatedField(read_only=True)
 
     class Meta:
         model = InventoryItem
