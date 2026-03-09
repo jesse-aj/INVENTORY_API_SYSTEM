@@ -45,7 +45,7 @@ This API simulates a real-world inventory management system for a store. It allo
 - **Framework:** Django & Django REST Framework (DRF)
 - **Database:** SQLite (development) / PostgreSQL (production)
 - **Authentication:** JWT (JSON Web Tokens)
-- **Deployment:** PythonAnywhere / Heroku
+- **Deployment:** PythonAnywhere
 
 ---
 
@@ -80,7 +80,7 @@ inventory_system/
 
 ### Prerequisites
 
-- Python 3.x
+- Python 3.11
 - pip
 
 ### Installation
@@ -202,7 +202,7 @@ Authorization: Bearer <your_token_here>
 
 ## Deployment
 
-This API is deployed on **PythonAnywhere / Heroku**.
+This API is deployed on **PythonAnywhere**.
 
 Live URL: https://billjesse.pythonanywhere.com/api/
 
@@ -210,4 +210,4 @@ Live URL: https://billjesse.pythonanywhere.com/api/
 
 ## Author
 
-Built as a Capstone Project during backend development training.
+Jesse - Built as a Capstone Project during backend development training.
