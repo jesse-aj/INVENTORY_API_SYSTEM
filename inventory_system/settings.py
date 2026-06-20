@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "users",
     "rest_framework_simplejwt",
     "storages",
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -98,6 +99,26 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ),
 
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+
+}
+
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'InvenCore API',
+    'DESCRIPTION': 'Inventory management API with role-based access control, JWT authentication, and S3-backed image storage.',
+    'VERSION': '1.0.0',
+    'SWAGGER_UI_SETTINGS': {
+        'persistAuthorization': True,
+    },
+    'SECURITY': [{'Bearer': []}],
+    'SECURITY_DEFINITIONS': {
+        'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header',
+        }
+    },
 }
 
 # Password validation
