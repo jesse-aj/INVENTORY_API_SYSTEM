@@ -8,7 +8,6 @@ CATEGORY_CHOICES = [
     ('food', 'Food'),
 ]
 
-image = models.ImageField(upload_to='inventory_images/', blank=True, null=True)
 
 class InventoryItem(models.Model):
     name = models.CharField(max_length = 50)
@@ -19,6 +18,7 @@ class InventoryItem(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
     last_update = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='inventory_images/', blank=True, null=True)
 
     def __str__(self):
         return self.name
